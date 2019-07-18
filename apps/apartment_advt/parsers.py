@@ -8,7 +8,7 @@ from apps.apartment_advt.models import ApartmentAdvt
 
 
 class DomRiaParser:
-    items = ('title', 'checkup_id', 'price', 'num_of_rooms', 'district', 'description')
+    items = ('title', 'checkup_id', 'price', 'num_of_rooms', 'district', 'description', 'publishing_date')
 
     BASE_URL = f"https://developers.ria.com/dom/search?category=1&realty_type=2&operation_type=3&" \
         f"state_id=10&city_id=10&fullCategoryOperation=1_2_3&api_key={settings.DOM_RIA_TOKEN}"
@@ -97,6 +97,10 @@ class DomRiaParser:
     @staticmethod
     def get_description(item):
         return item.get('description', '')
+
+    @staticmethod
+    def get_publishing_date(item):
+        return item.get('publishing_date')
 
     @staticmethod
     def log_error(e):

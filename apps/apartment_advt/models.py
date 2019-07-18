@@ -28,6 +28,10 @@ class ApartmentAdvt(IdModel, TimeStampedModel):
     )
     description = models.TextField()
 
+    publishing_date = models.DateTimeField(
+        null=True,
+    )
+
     class Meta:
         db_table = 'apartment_advt'
 
