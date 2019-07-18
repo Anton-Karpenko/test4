@@ -69,6 +69,7 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     "rest_framework",
     "drf_yasg",
+    "django_filters",
 ]
 
 LOCAL_APPS = [
@@ -233,3 +234,18 @@ LOGGING = {
 
 # RIA
 DOM_RIA_TOKEN = env('DOM_RIA_TOKEN', None)
+
+
+# DJANGO REST FRAMEWORK
+# ------------------------------------------------------------------------------
+# https://www.django-rest-framework.org/api-guide/settings/
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'apps.base.pagination.BaseResultsSetPagination',
+}
