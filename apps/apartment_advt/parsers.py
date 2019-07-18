@@ -50,6 +50,7 @@ class DomRiaParser:
             if parsed.get('error'):
                 print("Sleep because of: \n", parsed['error']['message'])
                 sleep(60 * 60)  # 1 hour
+                return self.get_items(page)
             else:
                 self.log_error(str(e))
 
@@ -79,8 +80,15 @@ class DomRiaParser:
 
     @staticmethod
     def get_title(item):
-        return f"р-н {item.get('district_name', '')} {item.get('street_name', '')}, {item.get('rooms_count', '')} " \
-            f"ком. г.{item.get('city_name', '')}"
+        title = ''
+        if item.get('district_name'):
+            title += f"р-н {item.get('district_name', '')}"
+        title += f"{item.get('street_name', '')}, "
+        if item.get('rooms_count', ''):
+            title += f"{item.get('street_name', '')} ком. "
+        if item.get('city_name', ''):
+            title += f"г.{item.get('city_name', '')}"
+        return title
 
     @staticmethod
     def get_price(item):
