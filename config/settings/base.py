@@ -230,3 +230,6 @@ LOGGING = {
     },
     "root": {"level": "INFO", "handlers": ["console"]},
 }
+
+# RIA
+DOM_RIA_TOKEN = env('DOM_RIA_TOKEN', None)
