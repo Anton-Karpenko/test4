@@ -45,3 +45,11 @@ class CeleryAppConfig(AppConfig):
 @app.task(bind=True)
 def debug_task(self):
     print(f'Request: {self.request!r}')  # pragma: no cover
+
+
+@periodic_task(run_every=crontab(hour=2))
+def update_advertises():
+    from apps.apartment_advt.models import ApartmentAdvt
+    from apps.apartment_advt.parsers import DomRiaParser
+    last_publish = ApartmentAdvt.objects.all().order_by('-publishing_date').first().publishing_date
+    DomRiaParser(params={'date_from': last_publish})
