@@ -84,9 +84,9 @@ class DomRiaParser:
         if item.get('district_name'):
             title += f"р-н {item.get('district_name', '')}"
         title += f"{item.get('street_name', '')}, "
-        if item.get('rooms_count', ''):
-            title += f"{item.get('street_name', '')} ком. "
-        if item.get('city_name', ''):
+        if item.get('rooms_count'):
+            title += f"{item.get('rooms_count', '')} ком. "
+        if item.get('city_name'):
             title += f"г.{item.get('city_name', '')}"
         return title
 
