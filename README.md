@@ -20,10 +20,6 @@ Rest-API for work with parsed apartment advertises.
 `pytest`
 
 ### Note
-Currently database consists of advertises with invalid titles... 
-Probably in 3-4 hours I'll  replace current database with advertises which have valid titles because of a bug. ria
-.com provides only 1000 free requests per hour so it takes some time.
-
-Also I waisted a lot of time for writing grabber as dom.ria swagger was not working. As API parsing is more 
-predictable and more cleaner I decided to rewrite it to work with API. So I get useful params for parsing from XHR 
+I also worked on a grabber as dom.ria swagger was not working. As API parsing is more 
+predictable and more cleaner I decided to rewrite it to work with API. So I got useful params for parsing from XHR 
 requests on dom.ria.com
